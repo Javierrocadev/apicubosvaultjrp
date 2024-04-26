@@ -4,7 +4,9 @@ using apicubosvaultjrp.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace apicubosvaultjrp.Controllers
 {
@@ -76,6 +78,21 @@ namespace apicubosvaultjrp.Controllers
                 //DENTRO DE DICHO TOKEN, POR EJEMPLO, ISSUER, 
 
                 //AUDIENCE O EL TIEMPO DE VALIDACION DEL TOKEN 
+
+
+
+                string jsonUser =
+                   JsonConvert.SerializeObject(usuario);
+                //ESTO DEBE IR CIFRADO POR NOSOTROS
+
+                //CREAMOS UN ARRAY DE CLAIMS CON TODA 
+                //LA INFORMACION QUE DESEAMOS GUARDAR EN EL TOKEN
+                Claim[] informacion = new[]
+                {
+                    new Claim("UserData", jsonUser)
+                };
+
+
 
                 JwtSecurityToken token =
 

@@ -17,7 +17,7 @@ namespace apicubosvaultjrp.Controllers
             this.repo = repo;
         }
         //metodos
-
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<List<Cubo>>>
             GetCubos()
